@@ -14,7 +14,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toast.makeText(this, "I'am Showing a Toast!", Toast.LENGTH_LONG).show();
+        String alertText = "This is my variable text";
+
+        Toast.makeText(this, alertText, Toast.LENGTH_LONG).show();
 
     }
 
