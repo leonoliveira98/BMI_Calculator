@@ -68,8 +68,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void calculateBMI() {
-        Toast.makeText(MainActivity.this, "Calculate Button works!",
-                Toast.LENGTH_LONG).show();
+        String ageText = ageEditText.getText().toString();
+        String feetText = feetEditText.getText().toString();
+        String inchesText = inchesEditText.getText().toString();
+        String weightText = weightEditText.getText().toString();
+
+        resultText.setText("Age: " + ageText + ", Feet: " + feetText + ", Inches: " + inchesText +
+                ", Weight: " + weightText);
+
     }
 
 
