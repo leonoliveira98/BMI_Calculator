@@ -12,6 +12,17 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    // Variaveis publicas onde todos os metodos conseguem aceder
+    // Class variables; Are also called 'Fields'
+    // 'private' to make it more secure
+    private TextView resultText;
+    private Button calculateButton;
+    private RadioButton maleButton;
+    private RadioButton femaleButton;
+    private EditText ageEditText;
+    private EditText feetEditText;
+    private EditText inchesEditText;
+    private EditText weightEditText;
 
 
     @Override
@@ -20,31 +31,46 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        // Ir buscar os Id's do XML e mete-los em variaveis
-        TextView resultText = findViewById(R.id.text_view_result);
+        // Aqui a variavel 'calculateButton' apenas fica definida neste metodo e pode apenas ser usada aqui.
+        // Quando definimos a variavel fora do metodo, o 'setOnClickListener' nao funciona pq nao a encontra
+        //Button calculateButton = findViewById(R.id.button_calculate);
 
-        RadioButton maleButton = findViewById(R.id.radio_button_female);
-        RadioButton femaleButton = findViewById(R.id.radio_button_male);
-
-        EditText ageEditText = findViewById(R.id.edit_text_age);
-        EditText feetEditText = findViewById(R.id.edit_text_feet);
-        EditText inchesEditText = findViewById(R.id.edit_text_inches);
-        EditText weightEditText = findViewById(R.id.edit_text_weight);
-
-        Button calculateButton = findViewById(R.id.button_calculate);
-
-
-        calculateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Calculate Button works!", Toast.LENGTH_LONG).show();
-            }
-        });
-
-
+        // Call method
+        findViews();
+        setupButtonClickListener();
 
     }
 
+    private void findViews(){
+
+        // Ir buscar os Id's do XML e mete-los em variáveis
+        // 'resultText' é agr uma class variable
+        resultText = findViewById(R.id.text_view_result);
+
+        maleButton = findViewById(R.id.radio_button_female);
+        femaleButton = findViewById(R.id.radio_button_male);
+
+        ageEditText = findViewById(R.id.edit_text_age);
+        feetEditText = findViewById(R.id.edit_text_feet);
+        inchesEditText = findViewById(R.id.edit_text_inches);
+        weightEditText = findViewById(R.id.edit_text_weight);
+
+        calculateButton = findViewById(R.id.button_calculate);
+    }
+
+    private void setupButtonClickListener() {
+        calculateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calculateBMI();
+            }
+        });
+    }
+
+    private void calculateBMI() {
+        Toast.makeText(MainActivity.this, "Calculate Button works!",
+                Toast.LENGTH_LONG).show();
+    }
 
 
 }
